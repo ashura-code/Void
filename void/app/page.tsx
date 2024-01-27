@@ -18,7 +18,9 @@ export default function Home() {
 
   const getMusic = async (song_name) => {
     try {
-      const response = await axios.get(`http://98.70.80.28/songs/${song_name}`);
+      const response = await axios.get(
+        `https://void-proxy-server.onrender.com/proxy/${song_name}`
+      );
       if (response.status >= 200 && response.status <= 299) {
         const details = response.data;
         setSongArray(details);
@@ -100,7 +102,12 @@ export default function Home() {
         {/* <audio controls>
           <source src={currentSongPlayer} type="audio/mp3" />
         </audio> */}
-        <ReactAudioPlayer className='my-0 mx-auto' src={currentSongPlayer} autoPlay controls />
+        <ReactAudioPlayer
+          className="my-0 mx-auto"
+          src={currentSongPlayer}
+          autoPlay
+          controls
+        />
       </section>
     </div>
   );
